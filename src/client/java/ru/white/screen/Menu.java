@@ -348,51 +348,21 @@ public class Menu extends Screen implements IMinecraft {
             super.renderBackground(context, (int)lastMouseX, (int)lastMouseY, 0);
         }
         
-        if (effect("Серый фон")) grayscalePipeline.draw(globalAnim);
-        // Полностью отключили размытие фона - кнопки не были видны
-        // ScreenBlur.capture(1);
-        // if (effect("Размывать фон")) {
-        //     RenderUtil.Blur.blur(0, 0, screenWidth, screenHeight, globalAnim, 0, ColorUtil.getColor(0, 0));
+        // ПОЛНОСТЬЮ ОТКЛЮЧИЛИ ВСЕ ЭФФЕКТЫ ФОНА - кнопки должны быть четко видны
+        // if (effect("Серый фон")) grayscalePipeline.draw(globalAnim);
+        // if (effect("Затемнять фон")) {
+        //     RenderUtil.Images.texture(Identifier.of("client","textures/frame/background.png"), 0, 0, screenWidth, screenHeight, ColorUtil.multAlpha(ColorUtil.client(), globalAnim * 0.3F));
         // }
-        if (effect("Затемнять фон")) {
-            RenderUtil.Images.texture(Identifier.of("client","textures/frame/background.png"), 0, 0, screenWidth, screenHeight, ColorUtil.multAlpha(ColorUtil.client(), globalAnim * 0.3F));
-        }
-
-        float shaderMouseX = (float) (mc.mouse.getScaledX(mc.getWindow()) / scaleFix);
-        float shaderMouseY = (float) (mc.mouse.getScaledY(mc.getWindow()) / scaleFix);
-
-        if (effect("Шейдер")) {
-            int rayBase = ColorUtil.client();
-            raysPipeline.draw(globalAnim, ColorUtil.replAlpha(ColorUtil.multDark(rayBase, 0.5F), 0.9F * globalAnim), ColorUtil.replAlpha(rayBase, 0.9F * globalAnim), 0.1F, 0.08F, 0.26F);
-        }
-
-        if (effect("Точки")) {
-            halftonePipeline.draw(screenWidth, screenHeight, shaderMouseX, shaderMouseY, globalAnim * 0.1F, ColorUtil.getColor(255), 6, 0.7F, 3, 100);
-        }
-
-        if (effect("Скан линии")) drawScanLines(screenWidth, screenHeight, globalAnim);
-
-        if (effect("Свечение")) {
-            int glowColor = ColorUtil.replAlpha(ColorUtil.client(), globalAnim * 0.5F);
-            RenderUtil.Images.texture(Identifier.of("client","textures/effects/circles_effect.png"), 0, 30 - 30 * globalAnim, screenWidth, screenHeight, glowColor);
-            RenderUtil.Images.texture(Identifier.of("client","textures/effects/top_glow.png"), 0, -30 + 30 * globalAnim, screenWidth, screenHeight, glowColor);
-
-            if (!exit && globalAnim > 0.01F && globalAnim < 0.99F) {
-                float pulse = (globalAnim > 0.5F ? 1F - globalAnim : globalAnim) * 2F;
-                float scale = screenWidth / 1.75F * globalAnim;
-                float cx = screenWidth / 2F;
-                float cy = screenHeight / 2F;
-                RenderUtil.Render2D.rect(cx - scale, cy - scale, scale * 2, scale * 2, ColorUtil.getColor(255, 0.2F * pulse), scale);
-                RenderUtil.Render2D.glow(cx - scale, cy - scale, scale * 2, scale * 2, ColorUtil.replAlpha(ColorUtil.client(), 0.15F * pulse), scale, 12, 1);
-            }
-        }
-
-        if (effect("Частицы")) {
-            spawnParticle(screenWidth, screenHeight);
-            renderParticles(globalAnim);
-        } else if (!particles.isEmpty()) {
-            particles.clear();
-        }
+        // if (effect("Шейдер")) {
+        //     int rayBase = ColorUtil.client();
+        //     raysPipeline.draw(globalAnim, ColorUtil.replAlpha(ColorUtil.multDark(rayBase, 0.5F), 0.9F * globalAnim), ColorUtil.replAlpha(rayBase, 0.9F * globalAnim), 0.1F, 0.08F, 0.26F);
+        // }
+        // if (effect("Точки")) {
+        //     halftonePipeline.draw(screenWidth, screenHeight, shaderMouseX, shaderMouseY, globalAnim * 0.1F, ColorUtil.getColor(255), 6, 0.7F, 3, 100);
+        // }
+        // if (effect("Скан линии")) drawScanLines(screenWidth, screenHeight, globalAnim);
+        // if (effect("Свечение")) { ... }
+        // if (effect("Частицы")) { ... }
 
         // Отключили размытие всего экрана - кнопки были не видны
         // ScreenBlur.capture();
