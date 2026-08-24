@@ -394,7 +394,8 @@ public class Menu extends Screen implements IMinecraft {
             particles.clear();
         }
 
-        ScreenBlur.capture();
+        // Отключили размытие всего экрана - кнопки были не видны
+        // ScreenBlur.capture();
 
         S = Client.get().moduleManager().get(ClickGui.class).size.getValue();
 
@@ -408,7 +409,8 @@ public class Menu extends Screen implements IMinecraft {
         Font icons = Fonts.icon;
         Font guiicon = Fonts.gui;
 
-        ScreenBlur.capture();
+        // Отключили повторный захват размытия
+        // ScreenBlur.capture();
 
         float ht = 20 * S;
         float wt = 105 * S;
@@ -416,7 +418,8 @@ public class Menu extends Screen implements IMinecraft {
         float yt = y - 5 * S - ht;
 
         RenderUtil.Render2D.glow(xt, yt, wt, ht - 0.5F * S, ColorUtil.getColor(0, 0.15F * globalAnim), 7.5F * S, 15, 1);
-        RenderUtil.Blur.blur(xt, yt, wt, ht, globalAnim, 7.5F * S, ColorUtil.multAlpha(ColorUtil.multDark(ColorUtil.background(), 0.6F), globalAnim));
+        // Отключили размытие для верхней панели темы
+        // RenderUtil.Blur.blur(xt, yt, wt, ht, globalAnim, 7.5F * S, ColorUtil.multAlpha(ColorUtil.multDark(ColorUtil.background(), 0.6F), globalAnim));
         RenderUtil.Images.texture(Identifier.of("client","textures/frame/rectthemegui.png"), xt, yt, wt, ht, ColorUtil.multAlpha(ColorUtil.client(), globalAnim));
 
         float xtd = x + 12.5F * S;
@@ -434,7 +437,8 @@ public class Menu extends Screen implements IMinecraft {
         }
 
         RenderUtil.Render2D.glow(x, y, w, h - 0.5F * S, ColorUtil.getColor(0, 0.15F * globalAnim), 8 * S, 15, 1);
-        RenderUtil.Blur.blur(x, y, w, h, globalAnim, 8 * S, ColorUtil.multAlpha(ColorUtil.multDark(ColorUtil.background(), 0.6F), globalAnim));
+        // Отключили размытие для основного фона меню
+        // RenderUtil.Blur.blur(x, y, w, h, globalAnim, 8 * S, ColorUtil.multAlpha(ColorUtil.multDark(ColorUtil.background(), 0.6F), globalAnim));
         RenderUtil.Images.texture(Identifier.of("client","textures/frame/rectgui.png"), x, y, w, h, ColorUtil.multAlpha(ColorUtil.client(), globalAnim));
 
         RenderUtil.Render2D.glow(x + 6 * S, y + 6 * S, 30 * S, h - 12 * S, ColorUtil.getColor(0, 0.04F * globalAnim), 6 * S, 8, 1);
@@ -451,7 +455,8 @@ public class Menu extends Screen implements IMinecraft {
         String sgff = "Nightix" + ColorFormatting.getColor(ColorUtil.replAlpha(ColorUtil.client(), globalAnim * animL)) + " 5.0";
 
         RenderUtil.Render2D.glow(xPanelMini - draw.getWidth(sgff, 8 * S) - 4 * S + xAnimADd2, yPanelMini + 7 * S, 7 * S + draw.getWidth(sgff, 8 * S), 14 * S, ColorUtil.multAlpha(ColorUtil.getColor(0), globalAnim * animL * 0.1F), 4 * S, 6, 1);
-        RenderUtil.Blur.blur(xPanelMini - draw.getWidth(sgff, 8 * S) - 4 * S + xAnimADd2, yPanelMini + 7 * S, 7 * S + draw.getWidth(sgff, 8 * S), 14 * S, globalAnim * animL, 4 * S, ColorUtil.multAlpha(ColorUtil.background(), globalAnim * animL * 0.2F));
+        // Отключили размытие для названия Nightix
+        // RenderUtil.Blur.blur(xPanelMini - draw.getWidth(sgff, 8 * S) - 4 * S + xAnimADd2, yPanelMini + 7 * S, 7 * S + draw.getWidth(sgff, 8 * S), 14 * S, globalAnim * animL, 4 * S, ColorUtil.multAlpha(ColorUtil.background(), globalAnim * animL * 0.2F));
         draw.draw(sgff, xPanelMini - draw.getWidth(sgff, 8 * S) + xAnimADd2, yPanelMini + 9 * S, 8 * S, ColorUtil.getColor(200, globalAnim * animL));
 
         RenderUtil.Render2D.glow(xPanelMini + (30 * S) / 2 - (12 * S) / 2 + 5.5F * S, yPanelMini + 14 * S, 0.1F * S, 0.1F * S, ColorUtil.replAlpha(ColorUtil.client(), globalAnim * animL * 0.15F), 8 * S, 12, 1);
@@ -481,7 +486,8 @@ public class Menu extends Screen implements IMinecraft {
             String sgff2 = category.getName();
             float xAnimADd = 16 * S - 16 * S * animL2;
             RenderUtil.Render2D.glow(xPanelMini - draw.getWidth(sgff2, 8 * S) - 4 * S + xAnimADd, cy + 7 * S - 6 * S, 7 * S + draw.getWidth(sgff2, 8 * S), 14 * S, ColorUtil.multAlpha(ColorUtil.getColor(0), globalAnim * animL2 * 0.1F), 4 * S, 6, 1);
-            RenderUtil.Blur.blur(xPanelMini - draw.getWidth(sgff2, 8 * S) - 4 * S + xAnimADd, cy + 7 * S - 6 * S, 7 * S + draw.getWidth(sgff2, 8 * S), 14 * S, globalAnim * animL2, 4 * S, ColorUtil.multAlpha(ColorUtil.background(), globalAnim * animL2 * 0.2F));
+            // Отключили размытие для названий категорий
+            // RenderUtil.Blur.blur(xPanelMini - draw.getWidth(sgff2, 8 * S) - 4 * S + xAnimADd, cy + 7 * S - 6 * S, 7 * S + draw.getWidth(sgff2, 8 * S), 14 * S, globalAnim * animL2, 4 * S, ColorUtil.multAlpha(ColorUtil.background(), globalAnim * animL2 * 0.2F));
             draw.draw(sgff2, xPanelMini - draw.getWidth(sgff2, 8 * S) + xAnimADd, cy + 9 * S - 6 * S, 8 * S, ColorUtil.getColor(200, globalAnim * animL2));
 
             cy += 20 * S;
