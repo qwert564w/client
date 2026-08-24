@@ -349,8 +349,8 @@ public class Menu extends Screen implements IMinecraft {
         }
         
         if (effect("Серый фон")) grayscalePipeline.draw(globalAnim);
-        ScreenBlur.capture(1);
-        // Отключили размытие фона - оно перекрывало всё и кнопки были не видны
+        // Полностью отключили размытие фона - кнопки не были видны
+        // ScreenBlur.capture(1);
         // if (effect("Размывать фон")) {
         //     RenderUtil.Blur.blur(0, 0, screenWidth, screenHeight, globalAnim, 0, ColorUtil.getColor(0, 0));
         // }
