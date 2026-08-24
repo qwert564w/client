@@ -147,12 +147,10 @@ public class MainMenuScreen extends Screen implements IMinecraft {
 
         RenderUtil.Images.texture(Identifier.of("client","textures/frame/menu.png"), bgX, bgY, bgW, bgH, ColorUtil.getColor(255, alphaVal));
 
-
-        ScreenBlur.capture(2);
-
-        RenderUtil.Blur.blur(0,0,screenWidth,screenHeight,alphaVal,ColorUtil.getColor(0,alphaVal * 0.2F));
-
-        ScreenBlur.capture(4);
+        // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+        // ScreenBlur.capture(2);
+        // RenderUtil.Blur.blur(0,0,screenWidth,screenHeight,alphaVal,ColorUtil.getColor(0,alphaVal * 0.2F));
+        // ScreenBlur.capture(4);
 
         Fonts.nightix_2.drawCentered("G", screenWidth / 2,
                 screenHeight * 0.32F + 30 - 30 * alphaVal, 16, ColorUtil.replAlpha(ColorUtil.client(), alphaVal));

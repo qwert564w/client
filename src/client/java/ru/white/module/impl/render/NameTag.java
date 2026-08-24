@@ -101,8 +101,8 @@ public class NameTag extends Module {
         DrawContext context = e.getDrawContext();
         float tickDelta = e.getPartialTicks();
 
-
-        ScreenBlur.capture();
+        // ОТКЛЮЧЕНО РАЗМЫТИЕ - для четкости отображения NameTag
+        // ScreenBlur.capture();
 
         if (mc.world == null || mc.player == null) return;
 

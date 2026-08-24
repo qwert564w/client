@@ -137,14 +137,10 @@ public class AltManagerScreen extends Screen implements IMinecraft {
 
         RenderUtil.Images.texture(Identifier.of("client","textures/frame/menu.png"), bgX, bgY, bgW, bgH, ColorUtil.getColor(255, a));
 
-
-
-
-        ScreenBlur.capture(2);
-
-        RenderUtil.Blur.blur(0,0,screenWidth,screenHeight,a,ColorUtil.getColor(0,a * 0.2F));
-
-        ScreenBlur.capture(4);
+        // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+        // ScreenBlur.capture(2);
+        // RenderUtil.Blur.blur(0,0,screenWidth,screenHeight,a,ColorUtil.getColor(0,a * 0.2F));
+        // ScreenBlur.capture(4);
 
         Font font = Fonts.sf_regular;
 

@@ -128,7 +128,8 @@ public abstract class SplashOverlayMixin {
         RenderUtil.Render2D.rect(0, 0, sw, sh, ColorUtil.getColor(0, a));
         RenderUtil.Images.texture(MENU_BG, 0, 0, sw, sh, ColorUtil.getColor(255, a));
         RenderUtil.Render2D.rect(0, 0, sw, sh, ColorUtil.getColor(0, a * 0.20F));
-        ScreenBlur.capture(2);
+        // ОТКЛЮЧЕНО РАЗМЫТИЕ - для четкости отображения
+        // ScreenBlur.capture(2);
 
         float cx = sw / 2.0F;
         float cy = sh / 2.0F - 18.0F + floatY + rise;
