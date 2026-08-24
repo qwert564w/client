@@ -290,7 +290,10 @@ public class Menu extends Screen implements IMinecraft {
     }
 
     @Override
-    public void renderBackground(DrawContext context, int mouseX, int mouseY, float delta) {}
+    public void renderBackground(DrawContext context, int mouseX, int mouseY, float delta) {
+        // Рендерим стандартный фон Minecraft для видимости кнопок
+        super.renderBackground(context, mouseX, mouseY, delta);
+    }
 
     private GifTexture gif;
 
