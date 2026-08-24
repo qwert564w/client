@@ -343,13 +343,18 @@ public class Menu extends Screen implements IMinecraft {
             return;
         }
 
+        // Рендерим стандартный фон Minecraft ПЕРВЫМ слоем с полной непрозрачностью
+        if (context != null) {
+            super.renderBackground(context, (int)lastMouseX, (int)lastMouseY, 0);
+        }
+        
         if (effect("Серый фон")) grayscalePipeline.draw(globalAnim);
         ScreenBlur.capture(1);
         if (effect("Размывать фон")) {
             RenderUtil.Blur.blur(0, 0, screenWidth, screenHeight, globalAnim, 0, ColorUtil.getColor(0, 0));
         }
         if (effect("Затемнять фон")) {
-            RenderUtil.Images.texture(Identifier.of("client","textures/frame/background.png"), 0, 0, screenWidth, screenHeight, ColorUtil.multAlpha(ColorUtil.client(), globalAnim));
+            RenderUtil.Images.texture(Identifier.of("client","textures/frame/background.png"), 0, 0, screenWidth, screenHeight, ColorUtil.multAlpha(ColorUtil.client(), globalAnim * 0.4F));
         }
 
         float shaderMouseX = (float) (mc.mouse.getScaledX(mc.getWindow()) / scaleFix);
