@@ -29,6 +29,10 @@ public abstract class InGameHudMixin  {
         MinecraftClient mc = MinecraftClient.getInstance();
         if (mc.world == null) return;
 
+        // Отключаем блюр если открыто меню чита - чтобы кнопки были четко видны
+        if (mc.currentScreen instanceof ru.white.screen.Menu) {
+            return;
+        }
 
         ScreenBlur.frame();
 
