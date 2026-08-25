@@ -31,6 +31,7 @@ public abstract class InGameHudMixin  {
 
         // Отключаем блюр если открыто меню чита - чтобы кнопки были четко видны
         if (mc.currentScreen instanceof ru.white.screen.Menu) {
+            ScreenBlur.invalidate(); // Сбрасываем захваченный блюр
             return;
         }
 
