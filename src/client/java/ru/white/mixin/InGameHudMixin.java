@@ -29,11 +29,10 @@ public abstract class InGameHudMixin  {
         MinecraftClient mc = MinecraftClient.getInstance();
         if (mc.world == null) return;
 
-        // Если открыто меню чита - сбрасываем блюр, чтобы GUI был резким
-        // Блюр фона будет применён отдельно в Menu.renderOverlay()
+        // Если открыто меню чита - НЕ делаем блюр, Menu сам управляет своим фоном
         if (mc.currentScreen instanceof ru.white.screen.Menu) {
-            ScreenBlur.invalidate(); // Сбрасываем захваченный блюр
-            return; // Прерываем выполнение - блюр не будет захвачен для GUI
+            ScreenBlur.invalidate(); // Сбрасываем любой предыдущий блюр
+            return; // Прерываем - Menu будет рендериться в GameRenderMixin после GUI
         }
 
         // Отключаем блюр если сила блюра в теме равна 0
