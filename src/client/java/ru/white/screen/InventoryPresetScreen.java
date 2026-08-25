@@ -108,8 +108,9 @@ public final class InventoryPresetScreen extends Screen implements ru.white.util
         RenderUtil.Render2D.glow(panelX, panelY, PANEL_W, PANEL_H - 0.5F,
                 ColorUtil.getColor(0, 0.15F * alpha), 8, 15, 1);
 
-        RenderUtil.Blur.blur(panelX, panelY, PANEL_W, PANEL_H, alpha, 8,
-                ColorUtil.multAlpha(ColorUtil.multDark(ColorUtil.background(), 0.6F), alpha));
+        // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+        // RenderUtil.Blur.blur(panelX, panelY, PANEL_W, PANEL_H, alpha, 8,
+        //         ColorUtil.multAlpha(ColorUtil.multDark(ColorUtil.background(), 0.6F), alpha));
 
         RenderUtil.Render2D.outline(panelX, panelY, PANEL_W, PANEL_H, 0.5F,
                 ColorUtil.replAlpha(ColorUtil.client(), alpha * 0.35F), 8);

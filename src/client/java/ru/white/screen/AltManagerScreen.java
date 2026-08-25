@@ -177,7 +177,8 @@ public class AltManagerScreen extends Screen implements IMinecraft {
         renderSidePanel(a, font);
 
 
-        RenderUtil.Blur.blur(panelX, panelY, panelW, panelH, a, 5, ColorUtil.getColor(20, a * 0.4F));
+        // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+        // RenderUtil.Blur.blur(panelX, panelY, panelW, panelH, a, 5, ColorUtil.getColor(20, a * 0.4F));
         //   RenderUtil.Render2D.outline(panelX, panelY, panelW, panelH, 0.75F, ColorUtil.getColor(255, a * 0.1F), 6);
 
         Fonts.sf_regular.drawCentered("Чтобы выйти, нажмите ESC или кликните по пустому месту.",screenWidth / 2,
@@ -368,8 +369,9 @@ public class AltManagerScreen extends Screen implements IMinecraft {
         float shownX = panelX + panelW + 8;
         sideX = hiddenX + (shownX - hiddenX) - 8 + 8 * sa  ;
 
-        RenderUtil.Blur.blur(sideX, sideY, sideW, sideH, sa, 6,
-                ColorUtil.getColor(20, sa * 0.3F));
+        // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+        // RenderUtil.Blur.blur(sideX, sideY, sideW, sideH, sa, 6,
+        //         ColorUtil.getColor(20, sa * 0.3F));
 
         float pad = 12;
         font.draw(ru.white.lang.Lang.pick("Настройки рандома", "Random settings"), sideX + pad, sideY + 9, 8, ColorUtil.getColor(185, sa));

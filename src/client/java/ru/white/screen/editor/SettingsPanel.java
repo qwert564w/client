@@ -264,8 +264,9 @@ public final class SettingsPanel {
         RenderUtil.Render2D.glow(b.x(), b.y(), b.width(), b.height() - 0.5F,
                 ColorUtil.getColor(0, 0.15F * alpha), 8, 15, 1);
 
-        RenderUtil.Blur.blur(b.x(), b.y(), b.width(), b.height(), alpha, 8,
-                ColorUtil.multAlpha(ColorUtil.multDark(ColorUtil.background(), 0.6F), alpha));
+        // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+        // RenderUtil.Blur.blur(b.x(), b.y(), b.width(), b.height(), alpha, 8,
+        //         ColorUtil.multAlpha(ColorUtil.multDark(ColorUtil.background(), 0.6F), alpha));
 
         RenderUtil.Render2D.outline(b.x(), b.y(), b.width(), b.height(), 0.5F,
                 ColorUtil.replAlpha(ColorUtil.client(), alpha * 0.35F), 8);

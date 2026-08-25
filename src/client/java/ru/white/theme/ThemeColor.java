@@ -71,7 +71,9 @@ public final class ThemeColor {
 
     /** Сила размытия темы (0..6), округлённая до int. */
     public static int getBlur() {
-        return Math.round(ThemeManager.get().getActive().getSlider(Theme.BLUR));
+        // Принудительно возвращаем 0 - блюр полностью отключен
+        return 0;
+        // return Math.round(ThemeManager.get().getActive().getSlider(Theme.BLUR));
     }
 
     /** Эффект тени темы. */

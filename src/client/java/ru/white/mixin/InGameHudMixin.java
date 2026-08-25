@@ -29,9 +29,15 @@ public abstract class InGameHudMixin  {
         MinecraftClient mc = MinecraftClient.getInstance();
         if (mc.world == null) return;
 
-        // Отключаем блюр если открыто меню чита - чтобы кнопки были четко видны
+        // Полностью отключаем блюр если открыто меню чита - чтобы кнопки были четко видны
         if (mc.currentScreen instanceof ru.white.screen.Menu) {
             ScreenBlur.invalidate(); // Сбрасываем захваченный блюр
+            return; // Прерываем выполнение - блюр не будет захвачен
+        }
+
+        // Отключаем блюр если сила блюра в теме равна 0
+        if (ru.white.theme.ThemeColor.getBlur() <= 0) {
+            ScreenBlur.invalidate();
             return;
         }
 

@@ -234,7 +234,8 @@ public class MainMenuScreen extends Screen implements IMinecraft {
         float hp = langHover.get();
 
         int accent = ColorUtil.getColor(125, 145, 244);
-        RenderUtil.Blur.blur(bx, by, w, h, 1, 5, ColorUtil.getColor(20, alphaVal * (0.3F + 0.1F * hp)));
+        // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+        // RenderUtil.Blur.blur(bx, by, w, h, 1, 5, ColorUtil.getColor(20, alphaVal * (0.3F + 0.1F * hp)));
 
         int textColor = ColorUtil.replAlpha(
                 ColorUtil.interpolateColor(ColorUtil.getColor(170, 170, 170, 1F), accent, hp), alphaVal);
@@ -384,8 +385,9 @@ public class MainMenuScreen extends Screen implements IMinecraft {
             float headerHeight = height;
             int accent = ColorUtil.overCol(ColorUtil.getColor(125, 125, 125), ColorUtil.client(), hp);
 
-            RenderUtil.Blur.blur(x, y, width, headerHeight, 1, 6,
-                    ColorUtil.getColor(12, globalAlpha * (0.3F + hp * 0.1F)));
+            // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+            // RenderUtil.Blur.blur(x, y, width, headerHeight, 1, 6,
+            //         ColorUtil.getColor(12, globalAlpha * (0.3F + hp * 0.1F)));
 
             int textColor = ColorUtil.replAlpha(
                     ColorUtil.interpolateColor(ColorUtil.getColor(255, 1F), ColorUtil.getColor(255, 1F), hp),
@@ -404,7 +406,8 @@ public class MainMenuScreen extends Screen implements IMinecraft {
             int accent = ColorUtil.overCol(ColorUtil.getColor(255), ColorUtil.client(), hp);
             int fill = ColorUtil.getColor(12, globalAlpha * (0.3F + hp * 0.1F));
 
-            RenderUtil.Blur.blur(x, y, width, height, 1, radius, fill);
+            // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+            // RenderUtil.Blur.blur(x, y, width, height, 1, radius, fill);
 
             int textColor = ColorUtil.replAlpha(
                     ColorUtil.getColor(255),
@@ -426,7 +429,8 @@ public class MainMenuScreen extends Screen implements IMinecraft {
             float knobSize = height - 8F;
             float knobX = x + 5F + (width - knobSize - 10F) * progress;
 
-            RenderUtil.Blur.blur(x, y, width, height, 1, radius, fill);
+            // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+            // RenderUtil.Blur.blur(x, y, width, height, 1, radius, fill);
 
             RenderUtil.Render2D.rect(knobX, y + 4F, knobSize, knobSize,
                     ColorUtil.getColor(255, 255, 255, globalAlpha * (0.02F + hp * 0.03F + (dragging ? 0.02F : 0F))), 4);
@@ -448,7 +452,8 @@ public class MainMenuScreen extends Screen implements IMinecraft {
                     globalAlpha * (0.3F - 0.2F * hp)), ColorUtil.getColor(
                     45, 0, 0, globalAlpha * (0.3F)), hp) :
                     ColorUtil.getColor(12, globalAlpha * (0.3F - 0.2F * hp));
-            RenderUtil.Blur.blur(x, y, width, height, 1, radius, fill);
+            // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+            // RenderUtil.Blur.blur(x, y, width, height, 1, radius, fill);
 
             Font font = Fonts.sf_regular;
 

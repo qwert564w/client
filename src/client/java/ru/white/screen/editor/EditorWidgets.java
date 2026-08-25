@@ -94,8 +94,9 @@ public final class EditorWidgets {
         RenderUtil.Render2D.glow(button.x(), button.y(), button.width(), button.height(),
                 ColorUtil.getColor(0, 0.15F * alpha), 5, 10, 1);
 
-        RenderUtil.Blur.blur(button.x(), button.y(), button.width(), button.height(), alpha, 5,
-                ColorUtil.multAlpha(ColorUtil.multDark(ColorUtil.background(), 0.6F), alpha));
+        // ОТКЛЮЧЕНО РАЗМЫТИЕ - кнопки должны быть четко видны
+        // RenderUtil.Blur.blur(button.x(), button.y(), button.width(), button.height(), alpha, 5,
+        //         ColorUtil.multAlpha(ColorUtil.multDark(ColorUtil.background(), 0.6F), alpha));
 
         if (button.accent()) {
             RenderUtil.Render2D.rect(button.x(), button.y(), button.width(), button.height(),
