@@ -1,0 +1,58 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Fabric Loom: 1.15.5
+
+> Task :clean
+> Task :compileJava NO-SOURCE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+
+> Task :compileClientJava
+/workspace/src/client/java/ru/white/utils/other/TimerUtil.java:12: warning: Not generating getLastMS(): A method with that name already exists
+    @Getter
+    ^
+/workspace/src/client/java/ru/white/manager/event_impl/MoveEvent.java:10: warning: Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
+@Data
+^
+
+The message received from the daemon indicates that the daemon has disappeared.
+Build request sent: Build{id=5ba90656-52cb-4bf0-9df5-71076ec8f2ff, currentDir=/workspace}
+Attempting to read last messages from the daemon log...
+Daemon pid: 14127
+  log file: /root/.gradle/daemon/9.2.1/daemon-14127.out.log
+----- Last 20 lines from daemon log file - daemon-14127.out.log -----
+2026-08-25T11:21:48.478+0000 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] resetting idle timer
+2026-08-25T11:21:48.478+0000 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon is running. Sleeping until state changes.
+2026-08-25T11:21:48.480+0000 [INFO] [org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy] Daemon is about to start building Build{id=5ba90656-52cb-4bf0-9df5-71076ec8f2ff, currentDir=/workspace}. Dispatching build started information...
+2026-08-25T11:21:48.483+0000 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 28: dispatching org.gradle.launcher.daemon.protocol.BuildStarted@59979e7c
+2026-08-25T11:21:48.485+0000 [DEBUG] [org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment] Configuring env variables: [PATH, TMUX_PANE, GRADLE_OPTS, JAVA_HOME, TERM, LANG, PS2, PS1, SUDO_USER, SUDO_GID, MAIL, LOGNAME, PYGAME_HIDE_SUPPORT_PROMPT, PROMPT_COMMAND, SUDO_UID, TERM_PROGRAM_VERSION, PWD, _, SHELL, TERM_PROGRAM, ORG_GRADLE_PROJECT_org_gradle_jvmopts, OLDPWD, USER, TIKTOKEN_CACHE_DIR, SUDO_COMMAND, LC_ALL, TMUX, SHLVL, HOME]
+2026-08-25T11:21:48.490+0000 [DEBUG] [org.gradle.launcher.daemon.server.exec.LogToClient] About to start relaying all logs to the client via the connection.
+2026-08-25T11:21:48.491+0000 [INFO] [org.gradle.launcher.daemon.server.exec.LogToClient] The client will now receive all logging from the daemon (pid: 14127). The daemon log file: /root/.gradle/daemon/9.2.1/daemon-14127.out.log
+2026-08-25T11:21:48.493+0000 [DEBUG] [org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon] Requesting daemon stop after processing Build{id=5ba90656-52cb-4bf0-9df5-71076ec8f2ff, currentDir=/workspace}
+2026-08-25T11:21:48.493+0000 [LIFECYCLE] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Daemon will be stopped at the end of the build 
+2026-08-25T11:21:48.493+0000 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Stop as soon as idle requested. The daemon is busy
+2026-08-25T11:21:48.494+0000 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon stop has been requested. Sleeping until state changes.
+2026-08-25T11:21:48.497+0000 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has started executing the build.
+2026-08-25T11:21:48.498+0000 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] Executing build with daemon context: DefaultDaemonContext[uid=6a250e2c-cfb7-46fd-a82a-ed880453b219,javaHome=/opt/jdk-21.0.12.1,javaVersion=21,javaVendor=Oracle Corporation,daemonRegistryDir=/root/.gradle/daemon,pid=14127,idleTimeout=120000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-XX:MaxMetaspaceSize=512m,-Xmx2G,-Dfile.encoding=UTF-8,-Duser.country,-Duser.language=en,-Duser.variant]
+Fabric Loom: 1.15.5
+/workspace/src/client/java/ru/white/utils/other/TimerUtil.java:12: warning: Not generating getLastMS(): A method with that name already exists
+    @Getter
+    ^
+/workspace/src/client/java/ru/white/manager/event_impl/MoveEvent.java:10: warning: Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
+@Data
+^----- End of the daemon log -----
+
+JVM crash log found: file:///workspace/hs_err_pid14127.log
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Gradle build daemon disappeared unexpectedly (it may have been killed or may have crashed)
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to generate a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.

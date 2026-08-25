@@ -343,29 +343,31 @@ public class Menu extends Screen implements IMinecraft {
             return;
         }
 
-        // Рендерим стандартный фон Minecraft ПЕРВЫМ слоем с полной непрозрачностью
-        if (context != null) {
-            super.renderBackground(context, (int)lastMouseX, (int)lastMouseY, 0);
+        // ОДИН захват кадра ДО любого блюра и GUI
+        boolean blurEnabled = ru.white.theme.ThemeColor.getBlur() > 0 && effect("Размывать фон");
+        if (blurEnabled) {
+            ScreenBlur.capture(1);
         }
-        
-        // ПОЛНОСТЬЮ ОТКЛЮЧИЛИ ВСЕ ЭФФЕКТЫ ФОНА - кнопки должны быть четко видны
-        // if (effect("Серый фон")) grayscalePipeline.draw(globalAnim);
-        // if (effect("Затемнять фон")) {
-        //     RenderUtil.Images.texture(Identifier.of("client","textures/frame/background.png"), 0, 0, screenWidth, screenHeight, ColorUtil.multAlpha(ColorUtil.client(), globalAnim * 0.3F));
-        // }
-        // if (effect("Шейдер")) {
-        //     int rayBase = ColorUtil.client();
-        //     raysPipeline.draw(globalAnim, ColorUtil.replAlpha(ColorUtil.multDark(rayBase, 0.5F), 0.9F * globalAnim), ColorUtil.replAlpha(rayBase, 0.9F * globalAnim), 0.1F, 0.08F, 0.26F);
-        // }
-        // if (effect("Точки")) {
-        //     halftonePipeline.draw(screenWidth, screenHeight, shaderMouseX, shaderMouseY, globalAnim * 0.1F, ColorUtil.getColor(255), 6, 0.7F, 3, 100);
-        // }
-        // if (effect("Скан линии")) drawScanLines(screenWidth, screenHeight, globalAnim);
-        // if (effect("Свечение")) { ... }
-        // if (effect("Частицы")) { ... }
 
-        // Отключили размытие всего экрана - кнопки были не видны
-        // ScreenBlur.capture();
+        // Применяем fullscreen blur к фону
+        if (blurEnabled) {
+            RenderUtil.Blur.blur(
+                0, 0,
+                screenWidth, screenHeight,
+                globalAnim,
+                0,
+                ColorUtil.getColor(0, 0)
+            );
+        }
+
+        // Затемнение фона
+        if (effect("Затемнять фон")) {
+            RenderUtil.Images.texture(
+                Identifier.of("client","textures/frame/background.png"),
+                0, 0, screenWidth, screenHeight,
+                ColorUtil.multAlpha(ColorUtil.client(), globalAnim * 0.3F)
+            );
+        }
 
         S = Client.get().moduleManager().get(ClickGui.class).size.getValue();
 
